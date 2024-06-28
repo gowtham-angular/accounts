@@ -1,0 +1,59 @@
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+
+  .images-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    .image-card {
+      text-align: center;
+      padding: 5px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        margin: 5px 0;
+      }
+
+      button {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .bank-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  .copy_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
