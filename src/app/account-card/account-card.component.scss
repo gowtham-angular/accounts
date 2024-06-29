@@ -15,7 +15,7 @@
 
       img {
         max-width: 100%;
-        height: auto;
+        height: 200px;
         display: block;
         margin-bottom: 10px;
       }
@@ -56,4 +56,21 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.upi-ids{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.accounts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  
 }

@@ -1,47 +1,44 @@
-<!-- Replace your existing HTML with this -->
-<mat-card class="card">
-    
-    <mat-card-content class="images-section">
-        <mat-card class="image-card">
-            <img mat-card-image src="../../assets/gpay.jpeg" alt="Image 1" />
-            <mat-card-title>GPAY</mat-card-title>
+<div class="accounts">
 
-            <button mat-raised-button color="accent" (click)="downloadImage('path/to/image1.jpg')">Download</button>
 
-        </mat-card>
-        <mat-card class="image-card">
-            <img mat-card-image src="../../assets/gpay.jpeg" alt="Image 2" />
-            <mat-card-title>Phonepe</mat-card-title>
+    <mat-card class="card" *ngFor="let account of bankAccounts">
+        <mat-card-content class="images-section">
+            <mat-card class="image-card">
+                <img mat-card-image [src]="account.image1Url" alt="Image 1" />
+                <mat-card-title>GPAY</mat-card-title>
+                <button mat-raised-button color="accent" (click)="downloadImage(account.image1Url)">Download</button>
+            </mat-card>
+            <mat-card class="image-card">
+                <img mat-card-image [src]="account.image2Url" alt="Image 2" />
+                <mat-card-title>Phonepe</mat-card-title>
+                <button mat-raised-button color="accent" (click)="downloadImage(account.image2Url)">Download</button>
+            </mat-card>
+        </mat-card-content>
+        <mat-card-content class="bank-details">
+            <mat-list>
+                <mat-list-item>Name: {{ account.name }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Account No: {{ account.accountNo }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>IFSC: {{ account.ifscCode }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Bank Name: {{ account.bankName }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Branch Name: {{ account.branchName }}</mat-list-item>
+                <mat-divider></mat-divider>
 
-            <button mat-raised-button color="accent" (click)="downloadImage('path/to/image2.jpg')">Download</button>
+            </mat-list>
+            <mat-list>
+                <mat-list-item *ngFor="let id of account.upiIds; let last = last"> {{ id.upiId }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
 
-        </mat-card>
-    </mat-card-content>
-    <mat-card-content class="bank-details">
-        <mat-list>
-            <mat-list-item>Name: John Doe</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Account No: 1234567890</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>IFSC: ABCD0123456</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Bank Name: Example Bank</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Branch Name: Main Branch</mat-list-item>
-        </mat-list>
-        <mat-list>
-            <mat-list-item>redbull&#64;hdfcbank</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>redbull&#64;hdfcbank</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>redbull&#64;hdfcbank</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>redbull&#64;hdfcbank</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>redbull&#64;hdfcbank</mat-list-item>
-        </mat-list>
-    </mat-card-content>
-    <mat-card-actions class="copy_button">
-        <button mat-raised-button color="accent" (click)="copyBankDetails()">Copy</button>
-    </mat-card-actions>
-</mat-card>
+            </mat-list>
+
+        </mat-card-content>
+        <mat-card-actions class="copy_button">
+            <button mat-raised-button color="accent" (click)="copyBankDetails(account)">Copy</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

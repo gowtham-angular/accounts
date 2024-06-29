@@ -1,1 +1,72 @@
-<p>home works!</p>
+<mat-card>
+    <form [formGroup]="bankAccountForm" (ngSubmit)="onSubmit()">
+        <div>
+
+            <div class="file-input-container">
+                <input type="file" id="image1" (change)="onImageUpload($event, 'image1')" hidden />
+                <label for="image1" mat-raised-button color="primary">
+                    <mat-icon>cloud_upload</mat-icon>
+                    Upload GPAY QR CODE
+                </label>
+                <img *ngIf="image1Url" [src]="image1Url" alt="Image 1" class="thumbnail">
+                <button *ngIf="image1Url" mat-icon-button color="warn" (click)="removeImage('image1')">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+
+            <div class="file-input-container">
+                <input type="file" id="image2" (change)="onImageUpload($event, 'image2')" hidden />
+                <label for="image2" mat-raised-button color="primary">
+                    <mat-icon>cloud_upload</mat-icon>
+                    Upload PHONEPE QR CODE
+                </label>
+                <img *ngIf="image2Url" [src]="image2Url" alt="Image 2" class="thumbnail">
+                <button *ngIf="image2Url" mat-icon-button color="warn" (click)="removeImage('image2')">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Account No</mat-label>
+                    <input matInput formControlName="accountNo">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Bank Name</mat-label>
+                    <input matInput formControlName="bankName">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>IFSC Code</mat-label>
+                    <input matInput formControlName="ifscCode">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Branch Name</mat-label>
+                    <input matInput formControlName="branchName">
+                </mat-form-field>
+            </div>
+
+            <div formArrayName="upiIds" class="upi-ids">
+                <div *ngFor="let upiId of upiIds.controls; let i = index" [formGroupName]="i" class="upi-id-group">
+                    <mat-form-field appearance="fill">
+                        <mat-label>UPI Id</mat-label>
+                        <input matInput formControlName="upiId">
+                    </mat-form-field>
+                    <button mat-icon-button (click)="removeUpiId(i)"> <mat-icon>delete</mat-icon></button>
+                </div>
+                <button mat-raised-button color="accent" (click)="addUpiId()">Add UPI Id</button>
+            </div>
+
+            <div class="submit-button">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</mat-card>
